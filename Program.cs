@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace c__Bootcamp
 {
@@ -6,27 +7,27 @@ namespace c__Bootcamp
     {
         static void Main(string[] args)
         {
-            string l = "33";
-            int a = int.Parse(l);
-            string rl = Console.ReadLine();
-            Console.WriteLine(rl);
+            int[] inputArr = new int[] { 1, 2, 5, 3, 5, 7 };
+            List<int> result = new List<int>();
+            int previousNum = inputArr[inputArr.Length - 1];
+            result.Add(previousNum);
 
-            string str = "5.5";
-            double d = Convert.ToDouble(str);
-            Console.WriteLine(d);
+            for (int i = inputArr.Length - 2; i >= 1; i--)
+            {
+                if ((inputArr[i] > previousNum) || (inputArr[i] < inputArr[i - 1]))
+                    continue;
+                previousNum = inputArr[i];
+                result.Add(previousNum);
+            }
 
-            string test2 = "1sdfs";
-            int test;
-            bool parseB = int.TryParse(test2, out test);
-            if (parseB) { Console.WriteLine(test); } else { Console.WriteLine("NOT PARSED"); }
-            try
-            {
-                int ss = Convert.ToInt32("3sgs");
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("An err occured");
-            }
+            if (inputArr[0] <= previousNum)
+                result.Add(inputArr[0]);
+
+            result.Reverse();
+
+            Console.Write(string.Join(" ", result));
+
+            Console.ReadLine();
         }
     }
 }
