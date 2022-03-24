@@ -1,0 +1,16 @@
+/home/artemsh/www/c# Bootcamp/bin/Debug/net5.0/c# Bootcamp
+/home/artemsh/www/c# Bootcamp/bin/Debug/net5.0/c# Bootcamp.deps.json
+/home/artemsh/www/c# Bootcamp/bin/Debug/net5.0/c# Bootcamp.runtimeconfig.json
+/home/artemsh/www/c# Bootcamp/bin/Debug/net5.0/c# Bootcamp.runtimeconfig.dev.json
+/home/artemsh/www/c# Bootcamp/bin/Debug/net5.0/c# Bootcamp.dll
+/home/artemsh/www/c# Bootcamp/bin/Debug/net5.0/ref/c# Bootcamp.dll
+/home/artemsh/www/c# Bootcamp/bin/Debug/net5.0/c# Bootcamp.pdb
+/home/artemsh/www/c# Bootcamp/obj/Debug/net5.0/c# Bootcamp.csproj.AssemblyReference.cache
+/home/artemsh/www/c# Bootcamp/obj/Debug/net5.0/c# Bootcamp.GeneratedMSBuildEditorConfig.editorconfig
+/home/artemsh/www/c# Bootcamp/obj/Debug/net5.0/c# Bootcamp.AssemblyInfoInputs.cache
+/home/artemsh/www/c# Bootcamp/obj/Debug/net5.0/c# Bootcamp.AssemblyInfo.cs
+/home/artemsh/www/c# Bootcamp/obj/Debug/net5.0/c# Bootcamp.csproj.CoreCompileInputs.cache
+/home/artemsh/www/c# Bootcamp/obj/Debug/net5.0/c# Bootcamp.dll
+/home/artemsh/www/c# Bootcamp/obj/Debug/net5.0/ref/c# Bootcamp.dll
+/home/artemsh/www/c# Bootcamp/obj/Debug/net5.0/c# Bootcamp.pdb
+/home/artemsh/www/c# Bootcamp/obj/Debug/net5.0/c# Bootcamp.genruntimeconfig.cache
