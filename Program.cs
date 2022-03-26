@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace c__Bootcamp
 {
@@ -6,26 +8,65 @@ namespace c__Bootcamp
     {
         static void Main(string[] args)
         {
-            string l = "33";
-            int a = int.Parse(l);
-            string rl = Console.ReadLine();
-            Console.WriteLine(rl);
+            AscentContext db = new();
 
-            string str = "5.5";
-            double d = Convert.ToDouble(str);
-            Console.WriteLine(d);
 
-            string test2 = "1sdfs";
-            int test;
-            bool parseB = int.TryParse(test2, out test);
-            if (parseB) { Console.WriteLine(test); } else { Console.WriteLine("NOT PARSED"); }
-            try
+            var country = new Country { Name = "Russia" };
+
+            var ascent1 = new Ascent
             {
-                int ss = Convert.ToInt32("3sgs");
-            }
-            catch (Exception)
+                DateStart = new DateTime(2022, 01, 01),
+                DateEnd = new DateTime(2022, 01, 09),
+                Mountain = new Mountain
+                {
+                    Name = "Elbrus",
+                    Height = 5642,
+                    Country = country
+                },
+                Group = new Group
+                {
+                    Name = "Elbrus Climbers",
+                    Climbers = new List<Climber>() {
+                        new Climber { Name = "Alex", Address = "Moscow" },
+                        new Climber { Name = "Semion", Address = "Moscow" },
+                    }
+                }
+            };
+            var ascent2 = new Ascent
             {
-                Console.WriteLine("An err occured");
+                DateStart = new DateTime(2021, 01, 01),
+                DateEnd = new DateTime(2021, 01, 01),
+                Mountain = new Mountain
+                {
+                    Name = "Kudikyna",
+                    Height = 2315,
+                    Country = country
+                },
+                Group = new Group
+                {
+                    Name = "Kudikina Climbers",
+                    Climbers = new List<Climber>() {
+                        new Climber { Name = "Vladislav", Address = "Moscow" },
+                        new Climber { Name = "Gennadiy", Address = "Moscow" },
+                    }
+                }
+            };
+
+            db.Ascents.Add(ascent1);
+            db.Ascents.Add(ascent2);
+            db.SaveChanges();
+
+            var mnts = db.Mountains;
+
+            foreach (var mnt in mnts)
+            {
+                foreach (var asc in mnt.Ascents.OrderBy(x => x.DateStart))
+                {
+                    Console.WriteLine(
+                        $"Mountain {mnt.Name}, ascent date - {asc.DateStart.ToString("dd.MM.yyyy")}, group - {asc.Group.Name}"
+                    );
+                }
+                Console.WriteLine("_________________________________________________________");
             }
         }
     }
