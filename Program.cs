@@ -8,65 +8,75 @@ namespace c__Bootcamp
     {
         static void Main(string[] args)
         {
-            AscentContext db = new();
+            VisitContext db = new();
 
-
-            var country = new Country { Name = "Russia" };
-
-            var ascent1 = new Ascent
+            var doctor = new Doctor { Name = "Petr Hiler" };
+            var patient = new Patient { Name = "Linda Diziz", Gender = "Female", BirthDate = new DateTime(1994, 03, 7), Address = "Kostroma, Bolshaya st. 74/1" };
+            var patient2 = new Patient { Name = "Henry Ilnes", Gender = "Male", BirthDate = new DateTime(2000, 11, 11), Address = "Moscow, Lenina st. 1a" };
+            var medicine = new Medicine { Name = "Panaceya", UseMethod = "Just take it in!", Effects = "Relief everything, pain fades down", SideEffects = "Never mentioned" };
+            var visit = new Visit
             {
-                DateStart = new DateTime(2022, 01, 01),
-                DateEnd = new DateTime(2022, 01, 09),
-                Mountain = new Mountain
-                {
-                    Name = "Elbrus",
-                    Height = 5642,
-                    Country = country
-                },
-                Group = new Group
-                {
-                    Name = "Elbrus Climbers",
-                    Climbers = new List<Climber>() {
-                        new Climber { Name = "Alex", Address = "Moscow" },
-                        new Climber { Name = "Semion", Address = "Moscow" },
-                    }
-                }
+                VisitDate = new DateTime(2020, 11, 11),
+                VisitPlace = "Home|Kostroma, Bolshaya st. 74/1",
+                Diagnosis = "COVID-19",
+                Recommendation = "Drink a lot of water, eat VitaminC pills twice a day, stay in bed.",
+                Patient = patient,
+                Doctor = doctor,
+                Medicine = medicine
             };
-            var ascent2 = new Ascent
+            var visit2 = new Visit
             {
-                DateStart = new DateTime(2021, 01, 01),
-                DateEnd = new DateTime(2021, 01, 01),
-                Mountain = new Mountain
-                {
-                    Name = "Kudikyna",
-                    Height = 2315,
-                    Country = country
-                },
-                Group = new Group
-                {
-                    Name = "Kudikina Climbers",
-                    Climbers = new List<Climber>() {
-                        new Climber { Name = "Vladislav", Address = "Moscow" },
-                        new Climber { Name = "Gennadiy", Address = "Moscow" },
-                    }
-                }
+                VisitDate = new DateTime(2021, 11, 11),
+                VisitPlace = "Home|Moscow, Lenina st. 1a",
+                Diagnosis = "Fly",
+                Recommendation = "Wait for 7 days, it will ends soon,",
+                Patient = patient2,
+                Doctor = doctor
             };
-
-            db.Ascents.Add(ascent1);
-            db.Ascents.Add(ascent2);
+            db.Visits.Add(visit);
+            db.Visits.Add(visit2);
+            db.Medicines.Add(medicine);
+            db.Patients.Add(patient);
+            db.Patients.Add(patient);
+            db.Doctors.Add(doctor);
             db.SaveChanges();
 
-            var mnts = db.Mountains;
+            var vst = db.Visits;
+            var med = db.Medicines;
+            //visitsInCurrentDayCounter
+            var vCounter = 0;
+            //patientsWithCurrentIllnessCounter
+            var pCounter = 0;
+            var currentIllness = "COVID-19";
 
-            foreach (var mnt in mnts)
+            foreach (var vs in vst)
             {
-                foreach (var asc in mnt.Ascents.OrderBy(x => x.DateStart))
+                if (vs.VisitDate == new DateTime(2021, 11, 11))
                 {
+                    vCounter++;
                     Console.WriteLine(
-                        $"Mountain {mnt.Name}, ascent date - {asc.DateStart.ToString("dd.MM.yyyy")}, group - {asc.Group.Name}"
+                        $"Visit {vs.Id}, visit date - {vs.VisitDate.ToString("dd.MM.yyyy")}"
                     );
                 }
                 Console.WriteLine("_________________________________________________________");
+
+                if (vs.Diagnosis == currentIllness)
+                {
+                    pCounter++;
+                }
+            }
+            Console.WriteLine($"__pCounter_=_{pCounter}_______vCounter_=_{vCounter}_______");
+
+            var specialInputedId = 1;
+
+            foreach (var md in med)
+            {
+                if (md.Id == specialInputedId)
+                {
+                    Console.WriteLine(
+                        $"Side effects of the medicine {md.Name} are '{ md.SideEffects}'"
+                    );
+                }
             }
         }
     }

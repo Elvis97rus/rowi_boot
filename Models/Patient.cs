@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace c__Bootcamp
 {
-    public class Climber
+    public class Patient
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string Gender { get; set; }
+        public DateTime BirthDate { get; set; }
         public string Address { get; set; }
-
-        public ICollection<Group> Groups { get; set; } = new List<Group>();
+        public ICollection<Visit> Visits { get; set; } = new List<Visit>();
     }
 }

@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace c__Bootcamp
 {
-    public class Country
+    public class Doctor
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public ICollection<Mountain> Mountains { get; set; } = new List<Mountain>();
+        public ICollection<Visit> Visits { get; set; } = new List<Visit>();
     }
 }
