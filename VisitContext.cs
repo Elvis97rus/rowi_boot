@@ -17,7 +17,7 @@ namespace c__Bootcamp
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
-            optionsBuilder.UseSqlServer(@"Server=localhost;Database=visits;User Id=SA;Password=artem2019Sh;");
+            optionsBuilder.UseSqlServer(@"Server=localhost;Database=visits;User Id=SA;");
         }
         //@"Data Source=artemsh-msi\SQLEXPRESS;Initial Catalog=ascents;Integrated Security=True"
         protected override void OnModelCreating(ModelBuilder modelBuilder)
